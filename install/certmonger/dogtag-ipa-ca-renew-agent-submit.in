@@ -376,7 +376,7 @@ def retrieve_cert_continuous(reuse_existing, **kwargs):
 
     new_cert = x509.load_pem_x509_certificate(result[1].encode('ascii'))
     if new_cert == old_cert:
-        syslog.syslog(syslog.LOG_INFO, "Updated certificate not available")
+        syslog.syslog(syslog.LOG_INFO, "Updated certificate not available, waiting for 8 hours")
         # No cert available yet, tell certmonger to wait another 8 hours
         return (WAIT_WITH_DELAY, 8 * 60 * 60, '')
 
